@@ -9,6 +9,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QIntValidator>
+#include <QDebug>
+#include <vector>
+#include <string>
 
 
 class MyWindow : public QDialog
@@ -23,15 +27,21 @@ private:
     QLineEdit *publicKey;
     QLineEdit *privateKey;
     QLineEdit *n, *m;
-    QTextEdit *decText;
-    QTextEdit *encText;
+    QTextEdit *decText; QLabel *decL;
+    QTextEdit *encText; QLabel *encL;
     QPushButton *encryptB, *decryptB, *getPublicKeyB;
 
+    int nInt, mInt;
+    std::vector<int> privateVec, publicVec;
+    std::vector<int> encVec, decVec;
 
 signals:
 
-public slots:
-
+private slots:
+    void getPublicKeyEnable(QString);
+    void getPublicKeyClicked();
+    void encryptClicked();
+    void decryptClicked();
 };
 
 #endif // MYWINDOW_H
